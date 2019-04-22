@@ -16,8 +16,6 @@
                 </el-form-item>
             </el-form>  
         </div>
-        <p class="bei">京ICP备18050367号-1</p>
-        <p  class ='recover'>点击恢复数据</p>
     </div>
 </template>
 <script>
@@ -25,8 +23,8 @@ export default{
     data(){
           return {
             ruleForm: {   //表单对象
-                username: 'admin',
-                password: '123456'
+                username: '',
+                password: ''
             },
             rules: {
                 username: [
@@ -43,6 +41,7 @@ export default{
             this.$refs[formName].validate((valid) =>{
                 if(valid){
                     localStorage.setItem('ms_username',this.ruleForm.username);
+                    // this.store.dispatch('login',this.this.ruleForm)
                     this.$router.push('/');
                 }else{
                     console.log('error submit!!');
@@ -63,7 +62,7 @@ export default{
  .login_wrapper .login{
     width: 460px;
     height: 340px;
-    margin-top:250px;
+    margin-top:20vh;
     border: 1px solid #eaeaea;
     box-shadow: 0 0 25px #cac6c6;
  }
@@ -79,17 +78,4 @@ export default{
 .login_wrapper .login .el-form{
     margin: 30px 80px auto 80px;
  }
- .recover{
-    position:absolute;
-    bottom:0px; 
-    cursor:pointer; 
-    color:#E6A23C;
-    display: none;
-}
-.bei{
-    position:absolute;
-    bottom:20px; 
-    cursor:pointer; 
-    color:#505458;
-} 
 </style>
